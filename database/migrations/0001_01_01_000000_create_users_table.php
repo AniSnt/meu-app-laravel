@@ -11,13 +11,28 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // o users (usuario do site)//
+        //monte a gaveta users //
+        //Todas as três (Migration, Schema e Blueprint) são classes. 
+        // O que diferencia o Blueprint é o papel dele:
+         // a planta onde as colunas são desenhadas.//
+
         Schema::create('users', function (Blueprint $table) {
+            // RG de cada usuário
             $table->id();
+            // nome (texto curto)
             $table->string('name');
+            // e-mail, não pode repetir
             $table->string('email')->unique();
+            // quando confirmou o e-mail, pode ficar vazio
             $table->timestamp('email_verified_at')->nullable();
+            // senha embaralhada pelo Hash
             $table->string('password');
+            // código do "lembrar de mim"
             $table->rememberToken();
+            // created_at e updated_at
+            //created_at: a data e hora em que o item foi criado. Em inglês, created at = "criado em".
+            //updated_at: a data e hora da última alteração. Updated at = "atualizado em".
             $table->timestamps();
         });
 
